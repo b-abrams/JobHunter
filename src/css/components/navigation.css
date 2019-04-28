@@ -1,0 +1,36 @@
+.Navigation {
+  position: sticky;
+  top: 0;
+  min-width: 100%;
+  min-height: 10vh;
+  text-align: left;
+  background: saddlebrown;
+  font-family: "ZCOOL KuaiLe", cursive;
+  border-bottom: solid;
+  border-color: tan;
+  z-index: 1;
+  border-width: thick;
+}
+
+#hatLogo {
+  margin-left: -60vh;
+}
+
+#safariHat {
+  width: 10vh;
+  height: 10vh;
+  margin-left: 20vh;
+}
+
+#loginButton {
+  font-size: 3.5vh;
+  margin-right: -50vh;
+  margin-top: 1vh;
+  border-style: solid;
+  border-color: black;
+  background-color: tan;
+}
+#titleSpan {
+  font-size: 3.5vh;
+  margin-left: 1vh;
+}
