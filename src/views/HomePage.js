@@ -10,33 +10,38 @@ import "../css/views/homepage.css";
 class HomePage extends Component {
   constructor() {
     super();
-    this.state = { formValue: null };
+    this.state = { jobTitle: "", location: "", jobType: "" };
 
-    this.submit = this.submit.bind(this);
-    this.processSubmission = this.processSubmission.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  submit(event) {
-    console.log(this.state.formValue);
+  handleSubmit(event) {
+    console.log(
+      this.state.jobTitle,
+
+      this.state.location,
+
+      this.state.jobType
+    );
     event.preventDefault();
   }
 
-  processSubmission(event) {
-    this.setState({ formValue: event.target.value });
-    console.log(1);
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   render() {
     return (
       <Grid className="HomePage">
         <Row>
-          <Col lg={6} centered>
+          <Col lg={6}>
             <Grid className="homeGrid" id="hunterGrid">
               <Row>
-                <Col lg={true}>
+                <Col lg={6}>
                   <img id="hunterMale" src={HunterMale} alt="Male Hunter" />
                 </Col>
-                <Col lg={true}>
+                <Col lg={6}>
                   <img
                     id="hunterFemale"
                     src={HunterFemale}
@@ -45,7 +50,7 @@ class HomePage extends Component {
                 </Col>
               </Row>
               <Row>
-                <Col lg={true}>
+                <Col lg={12}>
                   <h1>Start Your Search for Your Next Job</h1>
                 </Col>
               </Row>
@@ -56,18 +61,20 @@ class HomePage extends Component {
             </Grid>
           </Col>
 
-          <Col lg={6} centered>
+          <Col lg={6}>
             <Grid className="homeGrid" id="quickSearchGrid">
               <h1>Quick Search</h1>
-              <Form id="homeForm" onSubmit={this.submit}>
+              <Form id="homeForm" onSubmit={this.handleSubmit}>
                 <Form.Group as={Row}>
                   <Form.Label column sm={2}>
                     Job Title
                   </Form.Label>
                   <Col sm={10}>
                     <Form.Control
+                      name="jobTitle"
                       type="text"
                       placeholder="e.g. Software Engineer"
+                      onChange={event => this.handleChange(event)}
                     />
                   </Col>
                 </Form.Group>
@@ -77,7 +84,12 @@ class HomePage extends Component {
                     Location
                   </Form.Label>
                   <Col sm={10}>
-                    <Form.Control type="text" placeholder="e.g. Los Angeles" />
+                    <Form.Control
+                      name="location"
+                      type="text"
+                      placeholder="e.g. Los Angeles"
+                      onChange={event => this.handleChange(event)}
+                    />
                   </Col>
                 </Form.Group>
                 <br />
@@ -87,13 +99,31 @@ class HomePage extends Component {
                       Employment Type
                     </Form.Label>
                     <Col sm={3}>
-                      <Form.Check type="radio" label="Full Time" />
+                      <Form.Check
+                        type="radio"
+                        label="Full Time"
+                        value="Full Time"
+                        name="jobType"
+                        onChange={event => this.handleChange(event)}
+                      />
                     </Col>
                     <Col sm={3}>
-                      <Form.Check type="radio" label="Part Time" />
+                      <Form.Check
+                        type="radio"
+                        label="Part Time"
+                        value="Part Time"
+                        name="jobType"
+                        onChange={event => this.handleChange(event)}
+                      />
                     </Col>
                     <Col sm={3}>
-                      <Form.Check type="radio" label="Internship" />
+                      <Form.Check
+                        type="radio"
+                        label="Internship"
+                        value="Internship"
+                        name="jobType"
+                        onChange={event => this.handleChange(event)}
+                      />
                     </Col>
                   </Form.Group>
                 </fieldset>
@@ -103,8 +133,6 @@ class HomePage extends Component {
                     <Button
                       id="searchButton"
                       type="submit"
-                      value={this.state.formValue}
-                      onClick={this.processSubmission}
                       className="homeButton"
                     >
                       <img id="binoculars" src={Binoculars} alt="Binoculars" />
