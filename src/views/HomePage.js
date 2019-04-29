@@ -24,6 +24,11 @@ class HomePage extends Component {
 
       this.state.jobType
     );
+    this.props.passFormData(
+      this.state.jobTitle,
+      this.state.location,
+      this.state.jobType
+    );
     event.preventDefault();
   }
 
