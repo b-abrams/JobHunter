@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
 import HunterMale from "../img/homepage/man.png";
@@ -11,7 +11,6 @@ class HomePage extends Component {
   constructor() {
     super();
     this.state = { jobTitle: "", location: "", jobType: "" };
-
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -38,10 +37,10 @@ class HomePage extends Component {
 
   render() {
     return (
-      <Grid className="HomePage">
+      <Container className="HomePage">
         <Row>
           <Col lg={6}>
-            <Grid className="homeGrid" id="hunterGrid">
+            <Container className="homeGrid" id="hunterGrid">
               <Row>
                 <Col lg={6}>
                   <img id="hunterMale" src={HunterMale} alt="Male Hunter" />
@@ -60,14 +59,14 @@ class HomePage extends Component {
                 </Col>
               </Row>
 
-              <Button id="register" className="homeButton">
+              <Button id="register" className="homeButton" variant="success">
                 Register
               </Button>
-            </Grid>
+            </Container>
           </Col>
 
           <Col lg={6}>
-            <Grid className="homeGrid" id="quickSearchGrid">
+            <Container className="homeGrid" id="quickSearchGrid">
               <h1>Quick Search</h1>
               <Form id="homeForm" onSubmit={this.handleSubmit}>
                 <Form.Group as={Row}>
@@ -100,7 +99,7 @@ class HomePage extends Component {
                 <br />
                 <fieldset>
                   <Form.Group as={Row}>
-                    <Form.Label column sm={2}>
+                    <Form.Label column sm={3}>
                       Employment Type
                     </Form.Label>
                     <Col sm={3}>
@@ -139,6 +138,7 @@ class HomePage extends Component {
                       id="searchButton"
                       type="submit"
                       className="homeButton"
+                      variant="success"
                     >
                       <img id="binoculars" src={Binoculars} alt="Binoculars" />
                       Search
@@ -146,10 +146,10 @@ class HomePage extends Component {
                   </Col>
                 </Form.Group>
               </Form>
-            </Grid>
+            </Container>
           </Col>
         </Row>
-      </Grid>
+      </Container>
     );
   }
 }
