@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 
 const styleNoJobRender = {
   textAlign: "center",
@@ -13,6 +13,13 @@ const JobInformation = props => {
     return (
       <div style={styleNoJobRender}>
         {"Searching for Jobs. It shouldn't take long"}
+        <br />
+        <br />
+        <Spinner
+          animation="border"
+          variant="success"
+          style={{ width: "10vh", height: "10vh" }}
+        />
       </div>
     );
   }

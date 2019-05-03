@@ -52,7 +52,7 @@ class App extends Component {
       <div className="App">
         <Navigation homeReset={this.homeReset} />
         {/* {pageRender()} */}
-        <Listings jobs={jobListings} />
+        <Listings jobs={jobListings} loading={false} />
       </div>
     );
   }
