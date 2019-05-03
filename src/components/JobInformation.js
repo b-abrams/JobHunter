@@ -1,41 +1,44 @@
 import React from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+
+const styleNoJobRender = {
+  textAlign: "center",
+  marginTop: "25%"
+};
+const styleJobRender = { textAlign: "center" };
+const styleDescriptionRender = { textAlign: "left", whiteSpace: "pre-wrap" };
 
 const JobInformation = props => {
-  if (props.job === null) {
+  if (props.loading === true) {
     return (
-      <Container style={{ width: "60%", position: "sticky" }}>
-        <Row>
-          <Col>{"Please Click on a Job"}</Col>
-        </Row>
-      </Container>
+      <div style={styleNoJobRender}>
+        {"Searching for Jobs. It shouldn't take long"}
+      </div>
     );
+  }
+  if (props.job === null) {
+    return <div style={styleNoJobRender}>{"Please Click on a Job"}</div>;
   } else {
     return (
-      <Container style={{ width: "60%", position: "sticky" }}>
-        <Row>
-          <Col>{props.job.jobTitle}</Col>
-        </Row>
-        <Row>
-          <Col>{props.job.company}</Col>
-        </Row>
-        <Row>
-          <Col>{props.job.jobType}</Col>
-        </Row>
-        <Row>
-          <Col>{"% Resume Match: " + Math.random() * 101}</Col>
-        </Row>
-        <Row>
-          <Col>
-            <Button variant="primary" href={props.job.link}>
-              {"Apply through " + props.job.source}
-            </Button>
-          </Col>
-        </Row>
-        <Row>
-          <Col>{props.job.jobDescription}</Col>
-        </Row>
-      </Container>
+      <div style={styleJobRender}>
+        <br />
+        <br />
+        {props.job.jobTitle} <br />
+        {props.job.company} <br />
+        {props.job.jobType} <br />
+        {"% Resume Match: " + Math.random() * 101}
+        <br />
+        <br />
+        <Button variant="primary" href={props.job.link}>
+          {"Apply through " + props.job.source}
+        </Button>
+        <br />
+        <br />
+        <div style={styleDescriptionRender}>
+          {props.job.jobDescription}
+        </div>{" "}
+        <br />
+      </div>
     );
   }
 };

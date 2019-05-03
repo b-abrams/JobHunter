@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Row, Col, Container } from "react-bootstrap";
 
 import ListingThumb from "../components/ListingThumb";
 import JobInformation from "../components/JobInformation";
 
+import "../css/views/listings.css";
 export default class Lisitings extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,7 @@ export default class Lisitings extends Component {
     return this.props.jobs.map(job => (
       <Button
         variant="success"
-        style={{ display: "block", width: "40%" }}
+        className="listingThumbButton"
         onClick={event => this.setState({ current: job })}
       >
         <ListingThumb job={job} />
@@ -27,24 +28,18 @@ export default class Lisitings extends Component {
 
   render() {
     return (
-      <div>
-        <div
-          style={{
-            float: "left",
-            display: "inline"
-          }}
-        >
+      <Row className="lisitngs">
+        <Col id="lsitingThumbCol" className="listingsCol" lg={4}>
           {this.createThumbs()}
-        </div>
-        <div
-          style={{
-            clear: "left",
-            display: "inline"
-          }}
-        >
-          <JobInformation job={this.state.current} />
-        </div>
-      </div>
+        </Col>
+        <Col id="jobInfo" className="listingsCol" lg={8}>
+          <Row>
+            <Col lg={{ span: 8, offset: 2 }} id="jobInfoInnerCol">
+              <JobInformation job={this.state.current} />
+            </Col>
+          </Row>
+        </Col>
+      </Row>
     );
   }
 }

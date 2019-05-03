@@ -1,0 +1,22 @@
+.listingThumbButton {
+  display: block;
+  width: 100%;
+  border: thin solid black;
+}
+
+.listingsCol {
+  overflow: scroll;
+  height: 90vh;
+}
+
+#jobInfo {
+  background-image: url(../../img/homepage/forrest.png);
+  width: 80%;
+}
+
+#jobInfoInnerCol {
+  background-color: white;
+  min-height: 90vh;
+  min-width: 70%;
+  border: thick solid saddlebrown;
+}
