@@ -10,19 +10,12 @@ import "../css/views/homepage.css";
 class HomePage extends Component {
   constructor() {
     super();
-    this.state = { jobTitle: "", location: "", jobType: "" };
+    this.state = { jobTitle: "", location: "", jobType: "", resume: null };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleSubmit(event) {
-    console.log(
-      this.state.jobTitle,
-
-      this.state.location,
-
-      this.state.jobType
-    );
     this.props.passFormData(
       this.state.jobTitle,
       this.state.location,
@@ -55,11 +48,19 @@ class HomePage extends Component {
               </Row>
               <Row>
                 <Col lg={12}>
-                  <h1>Start Your Search for Your Next Job</h1>
+                  <h1>
+                    Start The Hunt <br />
+                    For Your Next Job
+                  </h1>
                 </Col>
               </Row>
 
-              <Button id="register" className="homeButton" variant="success">
+              <Button
+                id="register"
+                className="homeButton"
+                variant="success"
+                onClick={this.props.changeShow}
+              >
                 Register
               </Button>
             </Container>
@@ -79,6 +80,7 @@ class HomePage extends Component {
                       type="text"
                       placeholder="e.g. Software Engineer"
                       onChange={event => this.handleChange(event)}
+                      required
                     />
                   </Col>
                 </Form.Group>
@@ -93,6 +95,7 @@ class HomePage extends Component {
                       type="text"
                       placeholder="e.g. Los Angeles"
                       onChange={event => this.handleChange(event)}
+                      required
                     />
                   </Col>
                 </Form.Group>
@@ -109,6 +112,7 @@ class HomePage extends Component {
                         value="Full Time"
                         name="jobType"
                         onChange={event => this.handleChange(event)}
+                        required
                       />
                     </Col>
                     <Col sm={3}>
@@ -118,6 +122,7 @@ class HomePage extends Component {
                         value="Part Time"
                         name="jobType"
                         onChange={event => this.handleChange(event)}
+                        required
                       />
                     </Col>
                     <Col sm={3}>
@@ -127,10 +132,26 @@ class HomePage extends Component {
                         value="Internship"
                         name="jobType"
                         onChange={event => this.handleChange(event)}
+                        required
                       />
                     </Col>
                   </Form.Group>
                 </fieldset>
+                <br />
+                <Form.Group as={Row}>
+                  <Form.Label column sm={2}>
+                    Resume
+                  </Form.Label>
+                  <Col sm={10}>
+                    <Form.Control
+                      name="resume"
+                      id="resume"
+                      type="file"
+                      accept=".doc,.docx,.pdf"
+                      onChange={event => this.handleChange(event)}
+                    />
+                  </Col>
+                </Form.Group>
                 <br />
                 <Form.Group as={Row}>
                   <Col sm={12} id="searchButtonCol">
