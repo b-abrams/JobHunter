@@ -3,9 +3,10 @@ import { Button, Spinner } from "react-bootstrap";
 
 const styleNoJobRender = {
   textAlign: "center",
-  marginTop: "25%"
+  marginTop: "25%",
+  padding: 0
 };
-const styleJobRender = { textAlign: "center" };
+const styleJobRender = { textAlign: "center", padding: 0 };
 const styleDescriptionRender = { textAlign: "left", whiteSpace: "pre-wrap" };
 
 const JobInformation = props => {
@@ -36,8 +37,11 @@ const JobInformation = props => {
         {"% Resume Match: " + Math.random() * 101}
         <br />
         <br />
-        <Button variant="primary" href={props.job.link}>
-          {"Apply through " + props.job.source}
+        <Button
+          variant={props.job.source === "Indeed" ? "primary" : "success"}
+          href={props.job.link}
+        >
+          {"Apply Through " + props.job.source}
         </Button>
         <br />
         <br />

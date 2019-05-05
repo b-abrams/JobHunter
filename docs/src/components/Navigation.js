@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, Row, Col } from "react-bootstrap";
+import { Button, Navbar } from "react-bootstrap";
 
 import Hat from "../img/navigation/hat.png";
 
@@ -7,21 +7,19 @@ import "../css/components/navigation.css";
 
 const Navigation = props => {
   return (
-    <Container className="Navigation">
-      <Row>
-        <Col lg={6} onClick={props.homeReset}>
-          <Button id="logoButton" variant="link">
-            <img id="safariHat" src={Hat} alt="hunter" />
-            <span id="titleSpan">Job Hunter</span>
-          </Button>
-        </Col>
-        <Col lg={6} align="center">
-          <Button id="loginButton" variant="success">
-            Login
-          </Button>
-        </Col>
-      </Row>
-    </Container>
+    <Navbar className="Navigation">
+      <Navbar.Brand onClick={props.homeReset}>
+        <Button id="logoButton" variant="link">
+          <img id="safariHat" src={Hat} alt="hunter" />
+          <span id="titleSpan">Job Hunter</span>
+        </Button>
+      </Navbar.Brand>
+      <Navbar.Collapse className="justify-content-end">
+        <Button id="loginButton" variant="success" onClick={props.changeShow}>
+          Login
+        </Button>
+      </Navbar.Collapse>
+    </Navbar>
   );
 };
 

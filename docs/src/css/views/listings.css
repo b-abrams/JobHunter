@@ -5,13 +5,14 @@
 }
 
 .listingsCol {
+  background-color: tan;
   overflow: scroll;
   height: 90vh;
 }
 
 #jobInfo {
   background-image: url(../../img/homepage/forrest.png);
-  width: 80%;
+  width: 60%;
 }
 
 #jobInfoInnerCol {
@@ -19,4 +20,8 @@
   min-height: 90vh;
   min-width: 70%;
   border: thick solid saddlebrown;
+}
+
+.listings {
+  padding: 0;
 }
