@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Row, Col, Container } from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
 
 import ListingThumb from "../components/ListingThumb";
 import JobInformation from "../components/JobInformation";
@@ -9,7 +9,7 @@ export default class Lisitings extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { currentJobToRender: null };
+    this.state = { current: null };
 
     this.createJobThumbs = this.createJobThumbs.bind(this);
   }
@@ -21,13 +21,14 @@ export default class Lisitings extends Component {
           <ListingThumb loading={this.props.loading} />
         </Button>
       );
+
       return loadButtonList.map(thumb => thumb);
     } else {
       return this.props.jobs.map(job => (
         <Button
           variant="success"
           className="listingThumbButton"
-          onClick={event => this.setState({ currentJobToRender: job })}
+          onClick={event => this.setState({ current: job })}
         >
           <ListingThumb job={job} loading={this.props.loading} />
         </Button>
@@ -37,23 +38,21 @@ export default class Lisitings extends Component {
 
   render() {
     return (
-      <Container className="lisitngs" fluid>
-        <Row>
-          <Col id="lsitingThumbCol" className="listingsCol" lg={4}>
-            {this.createJobThumbs()}
-          </Col>
-          <Col id="jobInfo" className="listingsCol" lg={{ span: 8 }}>
-            <Row>
-              <Col lg={{ span: 8, offset: 2 }} id="jobInfoInnerCol">
-                <JobInformation
-                  job={this.state.currentJobToRender}
-                  loading={this.props.loading}
-                />
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </Container>
+      <Row className="lisitngs">
+        <Col id="lsitingThumbCol" className="listingsCol" lg={4}>
+          {this.createJobThumbs()}
+        </Col>
+        <Col id="jobInfo" className="listingsCol" lg={8}>
+          <Row>
+            <Col lg={{ span: 8, offset: 2 }} id="jobInfoInnerCol">
+              <JobInformation
+                job={this.state.current}
+                loading={this.props.loading}
+              />
+            </Col>
+          </Row>
+        </Col>
+      </Row>
     );
   }
 }
