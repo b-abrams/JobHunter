@@ -15,7 +15,11 @@ const Navigation = props => {
         </Button>
       </Navbar.Brand>
       <Navbar.Collapse className="justify-content-end">
-        <Button id="loginButton" variant="success" onClick={props.changeShow}>
+        <Button
+          id="loginButton"
+          variant="success"
+          onClick={props.changeShowAlert}
+        >
           Login
         </Button>
       </Navbar.Collapse>

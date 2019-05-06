@@ -8,8 +8,8 @@ import Binoculars from "../img/homepage/binoculars.png";
 
 import "../css/views/homepage.css";
 class HomePage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { jobTitle: "", location: "", jobType: "", resume: null };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -19,7 +19,8 @@ class HomePage extends Component {
     this.props.passFormData(
       this.state.jobTitle,
       this.state.location,
-      this.state.jobType
+      this.state.jobType,
+      this.state.resume
     );
     event.preventDefault();
   }
@@ -59,7 +60,7 @@ class HomePage extends Component {
                 id="register"
                 className="homeButton"
                 variant="success"
-                onClick={this.props.changeShow}
+                onClick={this.props.changeShowAlert}
               >
                 Register
               </Button>
@@ -147,7 +148,7 @@ class HomePage extends Component {
                       name="resume"
                       id="resume"
                       type="file"
-                      accept=".doc,.docx,.pdf"
+                      accept=".docx,.pdf"
                       onChange={event => this.handleChange(event)}
                     />
                   </Col>

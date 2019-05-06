@@ -9,16 +9,17 @@ export default class Lisitings extends Component {
   constructor(props) {
     super(props);
 
+    this.resumeText = this.props.resume;
     this.state = { currentJobToRender: null };
 
     this.createJobThumbs = this.createJobThumbs.bind(this);
   }
 
   createJobThumbs() {
-    if (this.props.loading === true) {
+    if (this.props.loadingJobListings || this.props.loadingResumeText) {
       const loadButtonList = Array(9).fill(
         <Button variant="success" className="listingThumbButton">
-          <ListingThumb loading={this.props.loading} />
+          <ListingThumb loading={true} />
         </Button>
       );
       return loadButtonList.map(thumb => thumb);
@@ -29,7 +30,7 @@ export default class Lisitings extends Component {
           className="listingThumbButton"
           onClick={event => this.setState({ currentJobToRender: job })}
         >
-          <ListingThumb job={job} loading={this.props.loading} />
+          <ListingThumb job={job} loading={false} />
         </Button>
       ));
     }
@@ -47,7 +48,11 @@ export default class Lisitings extends Component {
               <Col lg={{ span: 8, offset: 2 }} id="jobInfoInnerCol">
                 <JobInformation
                   job={this.state.currentJobToRender}
-                  loading={this.props.loading}
+                  loading={
+                    this.props.loadingJobListings ||
+                    this.props.loadingResumeText
+                  }
+                  resumeText={this.props.resumeText}
                 />
               </Col>
             </Row>
