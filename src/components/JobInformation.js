@@ -40,6 +40,7 @@ const JobInformation = props => {
         <Button
           variant={props.job.source === "Indeed" ? "primary" : "success"}
           href={props.job.link}
+          target="_blank"
         >
           {"Apply Through " + props.job.source}
         </Button>
