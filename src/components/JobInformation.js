@@ -10,7 +10,7 @@ const styleJobRender = { textAlign: "center", padding: 0 };
 const styleDescriptionRender = { textAlign: "left", whiteSpace: "pre-wrap" };
 
 const JobInformation = props => {
-  if (props.loading === true) {
+  if (props.loading) {
     return (
       <div style={styleNoJobRender}>
         {"Searching for Jobs. It shouldn't take long"}
